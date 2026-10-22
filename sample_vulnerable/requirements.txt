@@ -1,0 +1,8 @@
+# Known vulnerable pinned dependency (CVE-2021-33503 / GHSA-q2x7-8rv6-6q7h)
+urllib3==1.26.4
+
+# Known vulnerable pinned dependency (GHSA-g3rq-g295-48cu)
+Jinja2==2.11.2
+
+# Unpinned dependency that should be flagged with DEP001-UNPINNED
+flask

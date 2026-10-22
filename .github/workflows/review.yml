@@ -1,0 +1,71 @@
+name: AI Security Review Bot
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  security-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Compute changed files in PR
+        id: diff-check
+        run: |
+          CHANGED=$(git diff --name-only --diff-filter=AM origin/${{ github.base_ref }}...HEAD || true)
+          FILES_ONE_LINE=$(echo "$CHANGED" | tr '\n' ' ' | xargs)
+          echo "changed_files=$FILES_ONE_LINE" >> $GITHUB_OUTPUT
+
+      - name: Run AI Security Review Scan
+        id: scanner-step
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-2.5-flash' }}
+        run: |
+          FILES="${{ steps.diff-check.outputs.changed_files }}"
+          if [ -z "$FILES" ]; then
+            echo "SKIPPED=1" >> $GITHUB_ENV
+            echo "SCAN_EXIT=0" >> $GITHUB_ENV
+            exit 0
+          fi
+          set +e
+          python cli.py scan . --changed-files $FILES --json results.json --report report.md
+          SCAN_EXIT_CODE=$?
+          set -e
+          echo "SCAN_EXIT=$SCAN_EXIT_CODE" >> $GITHUB_ENV
+
+      - name: Post or Update PR Comment
+        if: env.SKIPPED != '1' && always()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          python post_comment.py report.md
+
+      - name: Enforce Security Gates (Fail on Critical or High)
+        if: env.SKIPPED != '1'
+        run: |
+          if [ "$SCAN_EXIT" -ne 0 ]; then
+            echo "❌ Security review check failed: Active HIGH or CRITICAL vulnerabilities were found."
+            exit 1
+          fi

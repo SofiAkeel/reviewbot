@@ -1,0 +1,27 @@
+# Environment variables and local credentials
+.env
+.env.local
+
+# Python cache and environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Reviewbot scan outputs and test artifacts
+results.json
+report.md
+ai_cache.json
+eval/results.md
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Editor configurations
+.vscode/
+.idea/
+*.swp

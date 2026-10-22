@@ -1,0 +1,11 @@
+file,line,issue_type,description
+sample_vulnerable/app.py,11,sql_injection,SQL injection via f-string query in get_user_profile
+sample_vulnerable/app.py,20,remote_code_execution,Insecure eval() on untrusted user expression
+sample_vulnerable/app.py,26,command_injection,Command injection via subprocess with shell=True
+sample_vulnerable/utils.py,9,weak_crypto,MD5 hash algorithm used for password hashing
+sample_vulnerable/config.py,8,hardcoded_secret,Hardcoded AWS Access Key ID
+sample_vulnerable/config.py,11,hardcoded_secret,Hardcoded GitHub Personal Access Token
+sample_vulnerable/config.py,14,hardcoded_secret,Hardcoded database password credential
+sample_vulnerable/requirements.txt,2,vulnerable_dependency,Known CVE vulnerability in pinned urllib3==1.26.4
+sample_vulnerable/requirements.txt,5,vulnerable_dependency,Known CVE vulnerability in pinned Jinja2==2.11.2
+sample_vulnerable/requirements.txt,8,unpinned_dependency,Unpinned flask dependency

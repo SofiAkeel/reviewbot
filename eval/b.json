@@ -1,0 +1,884 @@
+[
+  {
+    "scanner": "secrets",
+    "rule_id": "SEC001-AWS",
+    "severity": "HIGH",
+    "file": "sample_vulnerable/config.py",
+    "line": 7,
+    "snippet": "AWS_ACCESS_KEY_ID = \"AKIA****MPLE\"",
+    "message": "Hardcoded AWS Access Key ID detected",
+    "ai": {
+      "explanation": "The scanner detected a hardcoded AWS Access Key. While the context suggests these are dummy keys for testing, hardcoding credentials in source code is a security anti-pattern that can lead to accidental commits of real production keys.",
+      "risk": "High",
+      "suggested_fix": "Use environment variables or a configuration file excluded from version control (e.g., .env file added to .gitignore) to manage credentials.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "secrets",
+    "rule_id": "SEC002-GITHUB",
+    "severity": "CRITICAL",
+    "file": "sample_vulnerable/config.py",
+    "line": 10,
+    "snippet": "GITHUB_API_TOKEN = \"ghp_****90ab\"",
+    "message": "Hardcoded GitHub Personal Access Token detected",
+    "ai": {
+      "explanation": "The scanner detected a hardcoded GitHub token. Even if the value is currently a placeholder, storing secrets in source code is a dangerous practice that leads to accidental credential exposure.",
+      "risk": "High",
+      "suggested_fix": "Remove the hardcoded token and use environment variables or a dedicated secret management service like AWS Secrets Manager or HashiCorp Vault.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "GHSA-2xpw-w6gg-jr37",
+    "severity": "HIGH",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 2,
+    "snippet": "urllib3==1.26.4",
+    "message": "Dependency 'urllib3==1.26.4' has known vulnerability GHSA-2xpw-w6gg-jr37: urllib3 streaming API improperly handles highly compressed data (Fixed in version 2.6.0)",
+    "ai": {
+      "explanation": "The project is using an outdated version of urllib3 (1.26.4) which is known to be affected by multiple critical vulnerabilities, including potential remote code execution and information disclosure.",
+      "risk": "Critical",
+      "suggested_fix": "Update the dependency to the latest stable version (e.g., 2.x) in requirements.txt to patch these known vulnerabilities.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "GHSA-34jh-p97f-mpxf",
+    "severity": "MEDIUM",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 2,
+    "snippet": "urllib3==1.26.4",
+    "message": "Dependency 'urllib3==1.26.4' has known vulnerability GHSA-34jh-p97f-mpxf: urllib3's Proxy-Authorization request header isn't stripped during cross-origin redirects (Fixed in version 1.26.19)",
+    "ai": {
+      "explanation": "The project is using an outdated version of urllib3 (1.26.4) which is known to be affected by multiple critical vulnerabilities, including potential remote code execution and information disclosure.",
+      "risk": "Critical",
+      "suggested_fix": "Update the dependency to the latest stable version (e.g., 2.x) in requirements.txt to patch these known vulnerabilities.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "GHSA-38jv-5279-wg99",
+    "severity": "HIGH",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 2,
+    "snippet": "urllib3==1.26.4",
+    "message": "Dependency 'urllib3==1.26.4' has known vulnerability GHSA-38jv-5279-wg99: Decompression-bomb safeguards bypassed when following HTTP redirects (streaming API) (Fixed in version 2.6.3)",
+    "ai": {
+      "explanation": "The project is using an outdated version of urllib3 (1.26.4) which is known to be affected by multiple critical vulnerabilities, including potential remote code execution and information disclosure.",
+      "risk": "Critical",
+      "suggested_fix": "Update the dependency to the latest stable version (e.g., 2.x) in requirements.txt to patch these known vulnerabilities.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "GHSA-8988-9cw3-xx77",
+    "severity": "HIGH",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 2,
+    "snippet": "urllib3==1.26.4",
+    "message": "Dependency 'urllib3==1.26.4' has known vulnerability GHSA-8988-9cw3-xx77: urllib3: HTTPS proxy TLS configuration may be ignored or overridden (Fixed in version 2.8.0)",
+    "ai": {
+      "explanation": "The project is using an outdated version of urllib3 (1.26.4) which is known to be affected by multiple critical vulnerabilities, including potential remote code execution and information disclosure.",
+      "risk": "Critical",
+      "suggested_fix": "Update the dependency to the latest stable version (e.g., 2.x) in requirements.txt to patch these known vulnerabilities.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "GHSA-g4mx-q9vg-27p4",
+    "severity": "MEDIUM",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 2,
+    "snippet": "urllib3==1.26.4",
+    "message": "Dependency 'urllib3==1.26.4' has known vulnerability GHSA-g4mx-q9vg-27p4: urllib3's request body not stripped after redirect from 303 status changes request method to GET (Fixed in version 2.0.7)",
+    "ai": {
+      "explanation": "The project is using an outdated version of urllib3 (1.26.4) which is known to be affected by multiple critical vulnerabilities, including potential remote code execution and information disclosure.",
+      "risk": "Critical",
+      "suggested_fix": "Update the dependency to the latest stable version (e.g., 2.x) in requirements.txt to patch these known vulnerabilities.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "GHSA-gm62-xv2j-4w53",
+    "severity": "HIGH",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 2,
+    "snippet": "urllib3==1.26.4",
+    "message": "Dependency 'urllib3==1.26.4' has known vulnerability GHSA-gm62-xv2j-4w53: urllib3 allows an unbounded number of links in the decompression chain (Fixed in version 2.6.0)",
+    "ai": {
+      "explanation": "The project is using an outdated version of urllib3 (1.26.4) which is known to be affected by multiple critical vulnerabilities, including potential remote code execution and information disclosure.",
+      "risk": "Critical",
+      "suggested_fix": "Update the dependency to the latest stable version (e.g., 2.x) in requirements.txt to patch these known vulnerabilities.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "GHSA-pq67-6m6q-mj2v",
+    "severity": "MEDIUM",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 2,
+    "snippet": "urllib3==1.26.4",
+    "message": "Dependency 'urllib3==1.26.4' has known vulnerability GHSA-pq67-6m6q-mj2v: urllib3 redirects are not disabled when retries are disabled on PoolManager instantiation (Fixed in version 2.5.0)",
+    "ai": {
+      "explanation": "The project is using an outdated version of urllib3 (1.26.4) which is known to be affected by multiple critical vulnerabilities, including potential remote code execution and information disclosure.",
+      "risk": "Critical",
+      "suggested_fix": "Update the dependency to the latest stable version (e.g., 2.x) in requirements.txt to patch these known vulnerabilities.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "GHSA-q2q7-5pp4-w6pg",
+    "severity": "HIGH",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 2,
+    "snippet": "urllib3==1.26.4",
+    "message": "Dependency 'urllib3==1.26.4' has known vulnerability GHSA-q2q7-5pp4-w6pg: Catastrophic backtracking in URL authority parser when passed URL containing many @ characters (Fixed in version 1.26.5)",
+    "ai": {
+      "explanation": "The project is using an outdated version of urllib3 (1.26.4) which is known to be affected by multiple critical vulnerabilities, including potential remote code execution and information disclosure.",
+      "risk": "Critical",
+      "suggested_fix": "Update the dependency to the latest stable version (e.g., 2.x) in requirements.txt to patch these known vulnerabilities.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "GHSA-qccp-gfcp-xxvc",
+    "severity": "HIGH",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 2,
+    "snippet": "urllib3==1.26.4",
+    "message": "Dependency 'urllib3==1.26.4' has known vulnerability GHSA-qccp-gfcp-xxvc: urllib3: Sensitive headers forwarded across origins in proxied low-level redirects (Fixed in version 2.7.0)",
+    "ai": {
+      "explanation": "The project is using an outdated version of urllib3 (1.26.4) which is known to be affected by multiple critical vulnerabilities, including potential remote code execution and information disclosure.",
+      "risk": "Critical",
+      "suggested_fix": "Update the dependency to the latest stable version (e.g., 2.x) in requirements.txt to patch these known vulnerabilities.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "GHSA-v845-jxx5-vc9f",
+    "severity": "HIGH",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 2,
+    "snippet": "urllib3==1.26.4",
+    "message": "Dependency 'urllib3==1.26.4' has known vulnerability GHSA-v845-jxx5-vc9f: `Cookie` HTTP header isn't stripped on cross-origin redirects (Fixed in version 2.0.6)",
+    "ai": {
+      "explanation": "The project is using an outdated version of urllib3 (1.26.4) which is known to be affected by multiple critical vulnerabilities, including potential remote code execution and information disclosure.",
+      "risk": "Critical",
+      "suggested_fix": "Update the dependency to the latest stable version (e.g., 2.x) in requirements.txt to patch these known vulnerabilities.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "GHSA-vxq7-64xx-v4gw",
+    "severity": "HIGH",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 2,
+    "snippet": "urllib3==1.26.4",
+    "message": "Dependency 'urllib3==1.26.4' has known vulnerability GHSA-vxq7-64xx-v4gw: urllib3: HTTPResponse.stream()/read_chunked() buffers an unbounded chunk-size line into memory (Fixed in version 2.8.0)",
+    "ai": {
+      "explanation": "The project is using an outdated version of urllib3 (1.26.4) which is known to be affected by multiple critical vulnerabilities, including potential remote code execution and information disclosure.",
+      "risk": "Critical",
+      "suggested_fix": "Update the dependency to the latest stable version (e.g., 2.x) in requirements.txt to patch these known vulnerabilities.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "PYSEC-2021-108",
+    "severity": "MEDIUM",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 2,
+    "snippet": "urllib3==1.26.4",
+    "message": "Dependency 'urllib3==1.26.4' has known vulnerability PYSEC-2021-108: An issue was discovered in urllib3 before 1.26.5. When provided with a URL containing many @ characters in the authority component, the authority regular expression exhibits catastrophic backtracki... (Fixed in version 2d4a3fee6de2fa45eb82169361918f759269b4ec)",
+    "ai": {
+      "explanation": "The project is using an outdated version of urllib3 (1.26.4) which is known to be affected by multiple critical vulnerabilities, including potential remote code execution and information disclosure.",
+      "risk": "Critical",
+      "suggested_fix": "Update the dependency to the latest stable version (e.g., 2.x) in requirements.txt to patch these known vulnerabilities.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "PYSEC-2023-192",
+    "severity": "MEDIUM",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 2,
+    "snippet": "urllib3==1.26.4",
+    "message": "Dependency 'urllib3==1.26.4' has known vulnerability PYSEC-2023-192: urllib3 is a user-friendly HTTP client library for Python. urllib3 doesn't treat the `Cookie` HTTP header special or provide any helpers for managing cookies over HTTP, that is the responsibility o... (Fixed in version 644124ecd0b6e417c527191f866daa05a5a2056d)",
+    "ai": {
+      "explanation": "The project is using an outdated version of urllib3 (1.26.4) which is known to be affected by multiple critical vulnerabilities, including potential remote code execution and information disclosure.",
+      "risk": "Critical",
+      "suggested_fix": "Update the dependency to the latest stable version (e.g., 2.x) in requirements.txt to patch these known vulnerabilities.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "PYSEC-2023-212",
+    "severity": "MEDIUM",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 2,
+    "snippet": "urllib3==1.26.4",
+    "message": "Dependency 'urllib3==1.26.4' has known vulnerability PYSEC-2023-212: urllib3 is a user-friendly HTTP client library for Python. urllib3 previously wouldn't remove the HTTP request body when an HTTP redirect response using status 301, 302, or 303 after the request ha... (Fixed in version 4e98d57809dacab1cbe625fddeec1a290c478ea9)",
+    "ai": {
+      "explanation": "The project is using an outdated version of urllib3 (1.26.4) which is known to be affected by multiple critical vulnerabilities, including potential remote code execution and information disclosure.",
+      "risk": "Critical",
+      "suggested_fix": "Update the dependency to the latest stable version (e.g., 2.x) in requirements.txt to patch these known vulnerabilities.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "PYSEC-2026-141",
+    "severity": "MEDIUM",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 2,
+    "snippet": "urllib3==1.26.4",
+    "message": "Dependency 'urllib3==1.26.4' has known vulnerability PYSEC-2026-141: urllib3 is an HTTP client library for Python. From 1.23 to before 2.7.0, cross-origin redirects followed from the low-level API via ProxyManager.connection_from_url().urlopen(..., assert_same_host=... (Fixed in version 2.7.0)",
+    "ai": {
+      "explanation": "The project is using an outdated version of urllib3 (1.26.4) which is known to be affected by multiple critical vulnerabilities, including potential remote code execution and information disclosure.",
+      "risk": "Critical",
+      "suggested_fix": "Update the dependency to the latest stable version (e.g., 2.x) in requirements.txt to patch these known vulnerabilities.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "PYSEC-2026-1994",
+    "severity": "MEDIUM",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 2,
+    "snippet": "urllib3==1.26.4",
+    "message": "Dependency 'urllib3==1.26.4' has known vulnerability PYSEC-2026-1994: urllib3 streaming API improperly handles highly compressed data (Fixed in version 2.6.0)",
+    "ai": {
+      "explanation": "The project is using an outdated version of urllib3 (1.26.4) which is known to be affected by multiple critical vulnerabilities, including potential remote code execution and information disclosure.",
+      "risk": "Critical",
+      "suggested_fix": "Update the dependency to the latest stable version (e.g., 2.x) in requirements.txt to patch these known vulnerabilities.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "PYSEC-2026-1995",
+    "severity": "MEDIUM",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 2,
+    "snippet": "urllib3==1.26.4",
+    "message": "Dependency 'urllib3==1.26.4' has known vulnerability PYSEC-2026-1995: urllib3's Proxy-Authorization request header isn't stripped during cross-origin redirects (Fixed in version 1.26.19)",
+    "ai": {
+      "explanation": "The project is using an outdated version of urllib3 (1.26.4) which is known to be affected by multiple critical vulnerabilities, including potential remote code execution and information disclosure.",
+      "risk": "Critical",
+      "suggested_fix": "Update the dependency to the latest stable version (e.g., 2.x) in requirements.txt to patch these known vulnerabilities.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "PYSEC-2026-1996",
+    "severity": "MEDIUM",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 2,
+    "snippet": "urllib3==1.26.4",
+    "message": "Dependency 'urllib3==1.26.4' has known vulnerability PYSEC-2026-1996: Decompression-bomb safeguards bypassed when following HTTP redirects (streaming API) (Fixed in version 2.6.3)",
+    "ai": {
+      "explanation": "The project is using an outdated version of urllib3 (1.26.4) which is known to be affected by multiple critical vulnerabilities, including potential remote code execution and information disclosure.",
+      "risk": "Critical",
+      "suggested_fix": "Update the dependency to the latest stable version (e.g., 2.x) in requirements.txt to patch these known vulnerabilities.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "PYSEC-2026-1998",
+    "severity": "MEDIUM",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 2,
+    "snippet": "urllib3==1.26.4",
+    "message": "Dependency 'urllib3==1.26.4' has known vulnerability PYSEC-2026-1998: urllib3 allows an unbounded number of links in the decompression chain (Fixed in version 2.6.0)",
+    "ai": {
+      "explanation": "The project is using an outdated version of urllib3 (1.26.4) which is known to be affected by multiple critical vulnerabilities, including potential remote code execution and information disclosure.",
+      "risk": "Critical",
+      "suggested_fix": "Update the dependency to the latest stable version (e.g., 2.x) in requirements.txt to patch these known vulnerabilities.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "PYSEC-2026-1999",
+    "severity": "MEDIUM",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 2,
+    "snippet": "urllib3==1.26.4",
+    "message": "Dependency 'urllib3==1.26.4' has known vulnerability PYSEC-2026-1999: urllib3 redirects are not disabled when retries are disabled on PoolManager instantiation (Fixed in version 2.5.0)",
+    "ai": {
+      "explanation": "The project is using an outdated version of urllib3 (1.26.4) which is known to be affected by multiple critical vulnerabilities, including potential remote code execution and information disclosure.",
+      "risk": "Critical",
+      "suggested_fix": "Update the dependency to the latest stable version (e.g., 2.x) in requirements.txt to patch these known vulnerabilities.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "PYSEC-2026-4175",
+    "severity": "MEDIUM",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 2,
+    "snippet": "urllib3==1.26.4",
+    "message": "Dependency 'urllib3==1.26.4' has known vulnerability PYSEC-2026-4175: urllib3: HTTPS proxy TLS configuration may be ignored or overridden (Fixed in version 2.8.0)",
+    "ai": {
+      "explanation": "The project is using an outdated version of urllib3 (1.26.4) which is known to be affected by multiple critical vulnerabilities, including potential remote code execution and information disclosure.",
+      "risk": "Critical",
+      "suggested_fix": "Update the dependency to the latest stable version (e.g., 2.x) in requirements.txt to patch these known vulnerabilities.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "PYSEC-2026-4177",
+    "severity": "MEDIUM",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 2,
+    "snippet": "urllib3==1.26.4",
+    "message": "Dependency 'urllib3==1.26.4' has known vulnerability PYSEC-2026-4177: urllib3: HTTPResponse.stream()/read_chunked() buffers an unbounded chunk-size line into memory (Fixed in version 2.8.0)",
+    "ai": {
+      "explanation": "The project is using an outdated version of urllib3 (1.26.4) which is known to be affected by multiple critical vulnerabilities, including potential remote code execution and information disclosure.",
+      "risk": "Critical",
+      "suggested_fix": "Update the dependency to the latest stable version (e.g., 2.x) in requirements.txt to patch these known vulnerabilities.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "GHSA-cpwx-vrp4-4pq7",
+    "severity": "MEDIUM",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 5,
+    "snippet": "Jinja2==2.11.2",
+    "message": "Dependency 'Jinja2==2.11.2' has known vulnerability GHSA-cpwx-vrp4-4pq7: Jinja2 vulnerable to sandbox breakout through attr filter selecting format method (Fixed in version 3.1.6)",
+    "ai": {
+      "explanation": "The project is using an outdated version of Jinja2 (2.11.2) which contains multiple critical vulnerabilities, including sandbox breakouts and ReDoS, that have been patched in newer versions.",
+      "risk": "High",
+      "suggested_fix": "Update the Jinja2 dependency to the latest stable version (3.1.6 or higher) in requirements.txt.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "GHSA-g3rq-g295-4j3m",
+    "severity": "MEDIUM",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 5,
+    "snippet": "Jinja2==2.11.2",
+    "message": "Dependency 'Jinja2==2.11.2' has known vulnerability GHSA-g3rq-g295-4j3m: Regular Expression Denial of Service (ReDoS) in Jinja2 (Fixed in version 2.11.3)",
+    "ai": {
+      "explanation": "The project is using an outdated version of Jinja2 (2.11.2) which contains multiple critical vulnerabilities, including sandbox breakouts and ReDoS, that have been patched in newer versions.",
+      "risk": "High",
+      "suggested_fix": "Update the Jinja2 dependency to the latest stable version (3.1.6 or higher) in requirements.txt.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "GHSA-h5c8-rqwp-cp95",
+    "severity": "MEDIUM",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 5,
+    "snippet": "Jinja2==2.11.2",
+    "message": "Dependency 'Jinja2==2.11.2' has known vulnerability GHSA-h5c8-rqwp-cp95: Jinja vulnerable to HTML attribute injection when passing user input as keys to xmlattr filter (Fixed in version 3.1.3)",
+    "ai": {
+      "explanation": "The project is using an outdated version of Jinja2 (2.11.2) which contains multiple critical vulnerabilities, including sandbox breakouts and ReDoS, that have been patched in newer versions.",
+      "risk": "High",
+      "suggested_fix": "Update the Jinja2 dependency to the latest stable version (3.1.6 or higher) in requirements.txt.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "GHSA-h75v-3vvj-5mfj",
+    "severity": "MEDIUM",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 5,
+    "snippet": "Jinja2==2.11.2",
+    "message": "Dependency 'Jinja2==2.11.2' has known vulnerability GHSA-h75v-3vvj-5mfj: Jinja vulnerable to HTML attribute injection when passing user input as keys to xmlattr filter (Fixed in version 3.1.4)",
+    "ai": {
+      "explanation": "The project is using an outdated version of Jinja2 (2.11.2) which contains multiple critical vulnerabilities, including sandbox breakouts and ReDoS, that have been patched in newer versions.",
+      "risk": "High",
+      "suggested_fix": "Update the Jinja2 dependency to the latest stable version (3.1.6 or higher) in requirements.txt.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "GHSA-q2x7-8rv6-6q7h",
+    "severity": "MEDIUM",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 5,
+    "snippet": "Jinja2==2.11.2",
+    "message": "Dependency 'Jinja2==2.11.2' has known vulnerability GHSA-q2x7-8rv6-6q7h: Jinja has a sandbox breakout through indirect reference to format method (Fixed in version 3.1.5)",
+    "ai": {
+      "explanation": "The project is using an outdated version of Jinja2 (2.11.2) which contains multiple critical vulnerabilities, including sandbox breakouts and ReDoS, that have been patched in newer versions.",
+      "risk": "High",
+      "suggested_fix": "Update the Jinja2 dependency to the latest stable version (3.1.6 or higher) in requirements.txt.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "PYSEC-2021-66",
+    "severity": "MEDIUM",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 5,
+    "snippet": "Jinja2==2.11.2",
+    "message": "Dependency 'Jinja2==2.11.2' has known vulnerability PYSEC-2021-66: This affects the package jinja2 from 0.0.0 and before 2.11.3. The ReDoS vulnerability is mainly due to the `_punctuation_re regex` operator and its use of multiple wildcards. The last wildcard is t... (Fixed in version 2.11.3)",
+    "ai": {
+      "explanation": "The project is using an outdated version of Jinja2 (2.11.2) which contains multiple critical vulnerabilities, including sandbox breakouts and ReDoS, that have been patched in newer versions.",
+      "risk": "High",
+      "suggested_fix": "Update the Jinja2 dependency to the latest stable version (3.1.6 or higher) in requirements.txt.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "PYSEC-2026-1471",
+    "severity": "MEDIUM",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 5,
+    "snippet": "Jinja2==2.11.2",
+    "message": "Dependency 'Jinja2==2.11.2' has known vulnerability PYSEC-2026-1471: Jinja2 vulnerable to sandbox breakout through attr filter selecting format method (Fixed in version 3.1.6)",
+    "ai": {
+      "explanation": "The project is using an outdated version of Jinja2 (2.11.2) which contains multiple critical vulnerabilities, including sandbox breakouts and ReDoS, that have been patched in newer versions.",
+      "risk": "High",
+      "suggested_fix": "Update the Jinja2 dependency to the latest stable version (3.1.6 or higher) in requirements.txt.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "PYSEC-2026-1473",
+    "severity": "MEDIUM",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 5,
+    "snippet": "Jinja2==2.11.2",
+    "message": "Dependency 'Jinja2==2.11.2' has known vulnerability PYSEC-2026-1473: Jinja vulnerable to HTML attribute injection when passing user input as keys to xmlattr filter (Fixed in version 3.1.3)",
+    "ai": {
+      "explanation": "The project is using an outdated version of Jinja2 (2.11.2) which contains multiple critical vulnerabilities, including sandbox breakouts and ReDoS, that have been patched in newer versions.",
+      "risk": "High",
+      "suggested_fix": "Update the Jinja2 dependency to the latest stable version (3.1.6 or higher) in requirements.txt.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "PYSEC-2026-1474",
+    "severity": "MEDIUM",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 5,
+    "snippet": "Jinja2==2.11.2",
+    "message": "Dependency 'Jinja2==2.11.2' has known vulnerability PYSEC-2026-1474: Jinja vulnerable to HTML attribute injection when passing user input as keys to xmlattr filter (Fixed in version 3.1.4)",
+    "ai": {
+      "explanation": "The project is using an outdated version of Jinja2 (2.11.2) which contains multiple critical vulnerabilities, including sandbox breakouts and ReDoS, that have been patched in newer versions.",
+      "risk": "High",
+      "suggested_fix": "Update the Jinja2 dependency to the latest stable version (3.1.6 or higher) in requirements.txt.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "PYSEC-2026-1475",
+    "severity": "MEDIUM",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 5,
+    "snippet": "Jinja2==2.11.2",
+    "message": "Dependency 'Jinja2==2.11.2' has known vulnerability PYSEC-2026-1475: Jinja has a sandbox breakout through indirect reference to format method (Fixed in version 3.1.5)",
+    "ai": {
+      "explanation": "The project is using an outdated version of Jinja2 (2.11.2) which contains multiple critical vulnerabilities, including sandbox breakouts and ReDoS, that have been patched in newer versions.",
+      "risk": "High",
+      "suggested_fix": "Update the Jinja2 dependency to the latest stable version (3.1.6 or higher) in requirements.txt.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "dependency",
+    "rule_id": "DEP001-UNPINNED",
+    "severity": "LOW",
+    "file": "sample_vulnerable/requirements.txt",
+    "line": 8,
+    "snippet": "flask",
+    "message": "Package 'flask' is unpinned. Pin the exact version (package==x.y.z) to prevent supply-chain attacks.",
+    "ai": {
+      "explanation": "Unpinned dependencies can lead to unexpected updates that might introduce breaking changes or malicious code if a package is hijacked.",
+      "risk": "Medium",
+      "suggested_fix": "Pin the dependency to a specific version, e.g., 'flask==2.3.2'.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "static",
+    "rule_id": "B404",
+    "severity": "LOW",
+    "file": "./sample_vulnerable/app.py",
+    "line": 6,
+    "snippet": "5 import sqlite3\n6 import subprocess\n7",
+    "message": "Consider possible security implications associated with the subprocess module.",
+    "ai": {
+      "explanation": "Importing the subprocess module is not inherently a vulnerability, but it is a common vector for command injection if used with unsanitized user input.",
+      "risk": "Low",
+      "suggested_fix": "This is a warning to be careful. Ensure that any calls to subprocess.run or similar functions do not use shell=True with unsanitized input.",
+      "confidence": 0.7,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "static",
+    "rule_id": "B608",
+    "severity": "MEDIUM",
+    "file": "./sample_vulnerable/app.py",
+    "line": 13,
+    "snippet": "12     cursor = conn.cursor()\n13     query = f\"SELECT id, username, email FROM users WHERE username = '{username}'\"\n14     cursor.execute(query)",
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "ai": {
+      "explanation": "The code uses an f-string to construct a SQL query. This allows an attacker to manipulate the query structure by injecting malicious SQL commands through the 'username' input.",
+      "risk": "High",
+      "suggested_fix": "Use parameterized queries (prepared statements) provided by the sqlite3 library, e.g., cursor.execute('SELECT ... WHERE username = ?', (username,)).",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "static",
+    "rule_id": "B307",
+    "severity": "MEDIUM",
+    "file": "./sample_vulnerable/app.py",
+    "line": 20,
+    "snippet": "19     # LINE 20: Real Flaw - Insecure eval() on untrusted user input (Bandit B307)\n20     result = eval(user_math)\n21     return result",
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "ai": {
+      "explanation": "The eval() function executes arbitrary Python code. If 'user_math' contains user-provided input, an attacker can execute arbitrary commands on your server.",
+      "risk": "High",
+      "suggested_fix": "Avoid eval() entirely. If you need to evaluate mathematical expressions, use a safe library like 'numexpr' or a dedicated expression parser that does not execute arbitrary code.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "static",
+    "rule_id": "B602",
+    "severity": "HIGH",
+    "file": "./sample_vulnerable/app.py",
+    "line": 27,
+    "snippet": "26     command = f\"ping -c 1 {host}\"\n27     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)\n28     output, _ = process.communicate()",
+    "message": "subprocess call with shell=True identified, security issue.",
+    "ai": {
+      "explanation": "Using shell=True in subprocess calls allows an attacker to inject arbitrary shell commands if the 'host' variable is controlled by a user, leading to full command injection.",
+      "risk": "Critical",
+      "suggested_fix": "Set shell=False and pass the command as a list of arguments (e.g., ['ping', '-c', '1', host]). This prevents the shell from interpreting special characters.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "static",
+    "rule_id": "B105",
+    "severity": "LOW",
+    "file": "./sample_vulnerable/config.py",
+    "line": 10,
+    "snippet": "9 # LINE 11: Real Flaw - Hardcoded GitHub Personal Access Token\n10 GITHUB_API_TOKEN = \"ghp_fakeTokenForDemoAndTesting1234567890ab\"\n11",
+    "message": "Possible hardcoded password: 'ghp_fakeTokenForDemoAndTesting1234567890ab'",
+    "ai": {
+      "explanation": "Hardcoding secrets in source code is a major security risk as they can be exposed via version control systems.",
+      "risk": "Critical",
+      "suggested_fix": "Remove the hardcoded token and use environment variables or a dedicated secret management service like AWS Secrets Manager or HashiCorp Vault.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "static",
+    "rule_id": "B105",
+    "severity": "LOW",
+    "file": "./sample_vulnerable/config.py",
+    "line": 13,
+    "snippet": "12 # LINE 14: Real Flaw - Hardcoded Database Password Assignment\n13 DATABASE_PASSWORD = \"super_secret_production_password_999\"",
+    "message": "Possible hardcoded password: 'super_secret_production_password_999'",
+    "ai": {
+      "explanation": "Hardcoding production passwords in source code is a severe security vulnerability.",
+      "risk": "Critical",
+      "suggested_fix": "Remove the hardcoded password and use environment variables or a secure vault service to manage sensitive credentials.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "static",
+    "rule_id": "B404",
+    "severity": "LOW",
+    "file": "./sample_vulnerable/safe_examples.py",
+    "line": 6,
+    "snippet": "5 import hashlib\n6 import subprocess\n7",
+    "message": "Consider possible security implications associated with the subprocess module.",
+    "ai": {
+      "explanation": "The scanner flagged the import of 'subprocess' as a potential risk. However, simply importing a module is not a vulnerability; it depends entirely on how the module is used in the code.",
+      "risk": "None",
+      "suggested_fix": "No action required. This is a false positive as the mere presence of an import statement does not constitute a security flaw.",
+      "confidence": 0.9,
+      "false_positive": true
+    },
+    "suppressed": true,
+    "suppress_reason": "AI classified as false alarm (confidence: 0.90)"
+  },
+  {
+    "scanner": "static",
+    "rule_id": "B324",
+    "severity": "HIGH",
+    "file": "./sample_vulnerable/safe_examples.py",
+    "line": 11,
+    "snippet": "10     # SAFE: MD5 used purely for non-cryptographic cache key / file deduplication, NOT passwords\n11     return hashlib.md5(file_bytes).hexdigest()\n12",
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "ai": {
+      "explanation": "The scanner flagged MD5 as a weak hash. However, the code comment explicitly states it is used for non-cryptographic purposes (cache keys). In this specific context, it is not a security vulnerability.",
+      "risk": "Low",
+      "suggested_fix": "If you want to silence the scanner, you can use 'hashlib.md5(file_bytes, usedforsecurity=False).hexdigest()' to explicitly indicate that the hash is not being used for security-sensitive operations.",
+      "confidence": 0.9,
+      "false_positive": true
+    },
+    "suppressed": true,
+    "suppress_reason": "AI classified as false alarm (confidence: 0.90)"
+  },
+  {
+    "scanner": "static",
+    "rule_id": "B607",
+    "severity": "LOW",
+    "file": "./sample_vulnerable/safe_examples.py",
+    "line": 16,
+    "snippet": "15     # SAFE: subprocess executed with an explicit argument list, shell=False, and fixed input\n16     result = subprocess.run([\"ls\", \"-l\", \"/tmp\"], shell=False, check=True, capture_output=True)\n17     return result.stdout",
+    "message": "Starting a process with a partial executable path",
+    "ai": {
+      "explanation": "The scanner flagged the use of 'ls' as a partial path. While using absolute paths (e.g., '/bin/ls') is safer to prevent PATH hijacking, this is a low-risk finding in controlled environments.",
+      "risk": "Low",
+      "suggested_fix": "Use the absolute path to the executable, such as '/bin/ls', to ensure the intended binary is always executed regardless of the system's PATH environment variable.",
+      "confidence": 0.8,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  },
+  {
+    "scanner": "static",
+    "rule_id": "B603",
+    "severity": "LOW",
+    "file": "./sample_vulnerable/safe_examples.py",
+    "line": 16,
+    "snippet": "15     # SAFE: subprocess executed with an explicit argument list, shell=False, and fixed input\n16     result = subprocess.run([\"ls\", \"-l\", \"/tmp\"], shell=False, check=True, capture_output=True)\n17     return result.stdout",
+    "message": "subprocess call - check for execution of untrusted input.",
+    "ai": {
+      "explanation": "The scanner is checking for untrusted input in subprocess calls. Since the arguments are hardcoded strings and not user-controlled, this is safe.",
+      "risk": "None",
+      "suggested_fix": "No action required. The code is safe as it does not use shell=True and does not pass user-supplied input to the command.",
+      "confidence": 0.9,
+      "false_positive": true
+    },
+    "suppressed": true,
+    "suppress_reason": "AI classified as false alarm (confidence: 0.90)"
+  },
+  {
+    "scanner": "static",
+    "rule_id": "B108",
+    "severity": "MEDIUM",
+    "file": "./sample_vulnerable/safe_examples.py",
+    "line": 16,
+    "snippet": "15     # SAFE: subprocess executed with an explicit argument list, shell=False, and fixed input\n16     result = subprocess.run([\"ls\", \"-l\", \"/tmp\"], shell=False, check=True, capture_output=True)\n17     return result.stdout",
+    "message": "Probable insecure usage of temp file/directory.",
+    "ai": {
+      "explanation": "The scanner flagged this line for insecure temp file usage, but the code is simply running 'ls' on a system directory. There is no temp file creation or insecure handling occurring here.",
+      "risk": "Low",
+      "suggested_fix": "None required; this is a false positive. You can suppress this warning in your scanner configuration.",
+      "confidence": 0.9,
+      "false_positive": true
+    },
+    "suppressed": true,
+    "suppress_reason": "AI classified as false alarm (confidence: 0.90)"
+  },
+  {
+    "scanner": "static",
+    "rule_id": "B101",
+    "severity": "LOW",
+    "file": "./sample_vulnerable/safe_examples.py",
+    "line": 22,
+    "snippet": "21     # SAFE: assert used for internal development invariant validation, not access control\n22     assert item_count >= 0, \"Item count cannot be negative\"\n23     return item_count",
+    "message": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+    "ai": {
+      "explanation": "The scanner warns that 'assert' statements are removed in optimized mode (-O). This is only a security issue if the assertion is used for critical security checks or access control.",
+      "risk": "Low",
+      "suggested_fix": "If this check is critical for application security, replace the 'assert' with a standard 'if' statement that raises an exception (e.g., ValueError).",
+      "confidence": 0.9,
+      "false_positive": true
+    },
+    "suppressed": true,
+    "suppress_reason": "AI classified as false alarm (confidence: 0.90)"
+  },
+  {
+    "scanner": "static",
+    "rule_id": "B105",
+    "severity": "LOW",
+    "file": "./sample_vulnerable/safe_examples.py",
+    "line": 27,
+    "snippet": "26 # SAFE: UI display label, not an actual secret or password credential\n27 PASSWORD_FIELD_LABEL = \"Password\"",
+    "message": "Possible hardcoded password: 'Password'",
+    "ai": {
+      "explanation": "The scanner flagged the string 'Password' as a potential hardcoded secret. This is a false positive because it is a UI label, not a credential.",
+      "risk": "None",
+      "suggested_fix": "No action required. The scanner is over-sensitive to variable names containing the word 'password'.",
+      "confidence": 1.0,
+      "false_positive": true
+    },
+    "suppressed": true,
+    "suppress_reason": "AI classified as false alarm (confidence: 1.00)"
+  },
+  {
+    "scanner": "static",
+    "rule_id": "B324",
+    "severity": "HIGH",
+    "file": "./sample_vulnerable/utils.py",
+    "line": 9,
+    "snippet": "8     # LINE 9: Real Flaw - Broken/Weak Cryptographic Hash (MD5) for passwords (Bandit B324 / B303)\n9     hasher = hashlib.md5(password.encode(\"utf-8\"))\n10     return hasher.hexdigest()",
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "ai": {
+      "explanation": "MD5 is a cryptographically broken hash function that is vulnerable to collision attacks. It should never be used for password hashing, as it is too fast to compute and susceptible to rainbow table attacks.",
+      "risk": "High",
+      "suggested_fix": "Use a strong, slow, salted password hashing algorithm like Argon2id, bcrypt, or scrypt.",
+      "confidence": 1.0,
+      "false_positive": false
+    },
+    "suppressed": false,
+    "suppress_reason": null
+  }
+]
