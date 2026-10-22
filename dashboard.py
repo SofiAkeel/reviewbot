@@ -14,8 +14,8 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 RESULTS_PATH = os.path.join(PROJECT_ROOT, "results.json")
 load_dotenv(os.path.join(PROJECT_ROOT, ".env"))
 
-st.set_page_config(page_title="AI Security Review Bot", page_icon="🛡️", layout="wide")
-st.title("🛡️ AI Security Review Bot")
+st.set_page_config(page_title="Canary — AI Security Review Bot", page_icon="🐤", layout="wide")
+st.title("🐤 Canary — AI Security Review Bot")
 st.write("Run a project scan on demand and review its saved findings.")
 
 folder = st.text_input("Project folder", value=PROJECT_ROOT)
