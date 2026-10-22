@@ -116,7 +116,7 @@ We tested **Canary** on the `sample_vulnerable` project, which has **10 planted 
 ![Example finding with AI explanation](docs/images/finding-card.png)
 
 ### Evaluation Table
-![Evaluation table](docs/images/valuation-table.png)
+![Evaluation table](docs/images/evaluation-table.png)
 
 ### GitHub Pull Request Comment
 ![Pull Request Comment](docs/images/pr-comment.png)
