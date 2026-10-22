@@ -26,4 +26,4 @@ def ping_server(host: str):
     command = f"ping -c 1 {host}"
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
     output, _ = process.communicate()
-    return output.decode()
+    return output.decode()# Security test
